@@ -7,7 +7,7 @@ function PokemonCards() {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-		fetch("https://pokeapi.co/api/v2/pokemon?limit=1")
+		fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 			.then((res) => res.json())
 			.then((apiData) => {
 				const { results } = apiData;
