@@ -74,16 +74,39 @@
 	height: 825px;
 	width: 875px;
 
-	overflow: hidden;
+	overflow-y: scroll;
 
 	transform: translate(-50%, -50%);
 	position: fixed;
 	left: 50%;
 	top: 55%;
 	margin-top: 20px;
-	/* margin: auto; */
 }
 
-.cards-pokemon {
-	margin: 20px;
+.search-cards-wrapper::-webkit-scrollbar {
+	width: 20px;
+}
+
+.search-cards-wrapper::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+.search-cards-wrapper::-webkit-scrollbar-thumb {
+	background-color: #d6dee1;
+	border-radius: 20px;
+	border: 6px solid transparent;
+	background-clip: content-box;
+}
+
+.search-cards-wrapper::-webkit-scrollbar-thumb:hover {
+	background-color: #a8bbbf;
+}
+
+
+.card-col {
+	padding: 16px;
+}
+
+.pokemon-card {
+	margin-right: 0;
 }
