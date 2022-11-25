@@ -1,9 +1,27 @@
-import { React } from 'react'
+import { React, useEffect, useState } from 'react'
 import PokemonCards from '../Cards/PokemonCards';
 import SearchBar from '../Searchbar/SearchBar';
 import "./ContentWindow.css"
 
-function PokedexContainer(props) {
+function PokedexContainer() {
+	const [pokemons, setPokemons] = useState([]);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+				.then((res) => res.json())
+				.then((data) => {
+					const { results } = data;
+					let promiseArr = results.map(result => {
+						return fetch(result.url).then(res => res.json())
+					})
+					return Promise.all(promiseArr);
+				}).then(data => setPokemons(data))
+		}
+		fetchData();
+		console.log(pokemons);
+	}, []);
+
 	return (
 		<div className='container'>
 			<h1 className='title'>
@@ -12,7 +30,7 @@ function PokedexContainer(props) {
 			</h1>
 			<SearchBar />
 			<div className='search-cards-wrapper'>
-				<PokemonCards />
+				<PokemonCards pokemons={pokemons} />
 			</div>
 		</div>
 	)
