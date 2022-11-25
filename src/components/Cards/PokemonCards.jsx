@@ -1,34 +1,14 @@
-import { React, useState, useEffect } from 'react'
+import { React } from 'react'
 import { Card, Row, Col, Space } from 'antd';
 
 const { Meta } = Card;
 
-function PokemonCards() {
-	const [data, setData] = useState([]);
-
-	useEffect(() => {
-		fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
-			.then((res) => res.json())
-			.then((apiData) => {
-				const { results } = apiData;
-				setData(results);
-				// console.log(results);
-			})
-	}, []);
-
-	function GetPokemonType(url) {
-		fetch(url)
-			.then((res) => res.json())
-			.then((pokemonData) => {
-				console.log(pokemonData.types) // retorna uma lista
-			})
-	}
-
+function PokemonCards({ pokemons }) {
 	return (
 		<Row
 			className='cards-pokemon-row'
 		>
-			{data.map((pokemon, idx) => (
+			{pokemons.map((pokemon, idx) => (
 				<Col
 					className='card-col'
 					key={idx}
@@ -41,7 +21,7 @@ function PokemonCards() {
 					>
 						<Meta
 							title={pokemon.name}
-							description={GetPokemonType(`https://pokeapi.co/api/v2/pokemon/${idx + 1}`)}
+							description={"teste"}
 						/>
 					</Card>
 				</Col>
