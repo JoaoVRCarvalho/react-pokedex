@@ -4,7 +4,7 @@ import { Card, Row, Col, Collapse  } from 'antd';
 const { Panel } = Collapse;
 const { Meta } = Card;
 
-function PokemonCards({ pokemons }) {
+function PokemonCards({ pokemons, search }) {
 
 	const toCapitalLetter = name => {
 		return name.charAt(0).toUpperCase() + name.slice(1)
@@ -13,7 +13,15 @@ function PokemonCards({ pokemons }) {
 		<Row
 			className='cards-pokemon-row'
 		>
-			{pokemons.map((pokemon, idx) => (
+			{pokemons.filter((pokemon) => {
+				let val;
+				if (search === "") {
+					val = pokemon;
+				} else if(pokemon.name.toLowerCase().includes(search.toLowerCase())) {
+					val = pokemon;
+				}
+				return val;
+			}).map((pokemon, idx) => (
 				<Col
 					className='card-col'
 					key={idx}
@@ -22,7 +30,7 @@ function PokemonCards({ pokemons }) {
 					<Card
 						className='pokemon-card'
 						hoverable
-						cover={<img alt="pokemon-image" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idx + 1}.png`} />}
+						cover={<img alt="pokemon-image" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} />}
 					>
 						<Meta
 							className='Card-meta-class'
@@ -40,7 +48,8 @@ function PokemonCards({ pokemons }) {
 										</p>
 									))}
 								</Panel>
-							</Collapse>}
+							</Collapse>
+							}
 						/>
 					</Card>
 				</Col>
