@@ -5,10 +5,12 @@ import "./ContentWindow.css"
 
 function PokedexContainer() {
 	const [pokemons, setPokemons] = useState([]);
+	const [ buffer, setBuffer ] = useState([]);
+
 
 	useEffect(() => {
 		const fetchData = async () => {
-			fetch("https://pokeapi.co/api/v2/pokemon?limit=12")
+			fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 				.then((res) => res.json())
 				.then((data) => {
 					const { results } = data;
@@ -16,7 +18,10 @@ function PokedexContainer() {
 						return fetch(result.url).then(res => res.json())
 					})
 					return Promise.all(promiseArr);
-				}).then(data => setPokemons(data))
+				}).then(data => {
+					setPokemons(data)
+					setBuffer(data)
+				})
 		}
 		fetchData();
 	}, []);
@@ -30,7 +35,7 @@ function PokedexContainer() {
 			</h1>
 			<SearchBar />
 			<div className='search-cards-wrapper'>
-				<PokemonCards pokemons={pokemons} />
+				<PokemonCards pokemons={buffer} />
 			</div>
 		</div>
 	)
