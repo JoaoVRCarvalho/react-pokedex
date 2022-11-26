@@ -1,20 +1,24 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { Input, Space } from 'antd';
 
 const { Search } = Input;
 
-const onSearch = (value) => console.log(value)
+function SearchBar({ bufferArr, pokemonArr }) {
+	const [serach, setSearch] = useState();
 
-const SearchBar = ({ pokemonArr }) => (
-	<Space className='searchbar-wrapper'>
-		<Search
-			className='Searchbar'
-			placeholder="input search text"
-			onSearch={onSearch}
-			size="large"
-			enterButton
-		/>
-	</Space>
-)
+	const handleSearch = (e) => setSearch(e);
+
+	return (
+		<Space className='searchbar-wrapper'>
+			<Search
+				className='Searchbar'
+				placeholder="input search text"
+				onSearch={e => handleSearch(e)}
+				size="large"
+				enterButton
+			/>
+		</Space>
+	)
+}
 
 export default SearchBar;
