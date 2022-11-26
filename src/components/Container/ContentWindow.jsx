@@ -6,6 +6,8 @@ import "./ContentWindow.css"
 function PokedexContainer() {
 	const [pokemons, setPokemons] = useState([]);
 	const [ buffer, setBuffer ] = useState([]);
+	const [search, setSearch] = useState("");
+
 
 
 	useEffect(() => {
@@ -33,9 +35,16 @@ function PokedexContainer() {
 				POKEDEX!
 				<i className='icon' />
 			</h1>
-			<SearchBar />
+			<SearchBar 
+				buffer={buffer} 
+				pokemons={pokemons}
+				setSearch={setSearch}
+			/>
 			<div className='search-cards-wrapper'>
-				<PokemonCards pokemons={buffer} />
+				<PokemonCards
+					pokemons={buffer}
+					search={search}
+				/>
 			</div>
 		</div>
 	)
