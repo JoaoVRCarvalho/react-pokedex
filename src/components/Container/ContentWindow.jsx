@@ -8,7 +8,7 @@ function PokedexContainer() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			fetch("https://pokeapi.co/api/v2/pokemon?limit=6")
+			fetch("https://pokeapi.co/api/v2/pokemon?limit=12")
 				.then((res) => res.json())
 				.then((data) => {
 					const { results } = data;

@@ -5,7 +5,7 @@ const { Search } = Input;
 
 const onSearch = (value) => console.log(value)
 
-const SearchBar = () => (
+const SearchBar = ({ pokemonArr }) => (
 	<Space className='searchbar-wrapper'>
 		<Search
 			className='Searchbar'
