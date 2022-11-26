@@ -6,10 +6,9 @@ const { Meta } = Card;
 
 function PokemonCards({ pokemons }) {
 
-	const toCapitalLetter = (name) => {
+	const toCapitalLetter = name => {
 		return name.charAt(0).toUpperCase() + name.slice(1)
 	}
-
 	return (
 		<Row
 			className='cards-pokemon-row'
@@ -35,11 +34,11 @@ function PokemonCards({ pokemons }) {
 								ghost={false}
 							>
 								<Panel header={"Types"}>
-									{pokemon.types.map((type, idx) => {
+									{pokemon.types.map((type, idx) => (
 										<p key={idx}>
 											{toCapitalLetter(type.type.name)}
 										</p>
-									})}
+									))}
 								</Panel>
 							</Collapse>}
 						/>
