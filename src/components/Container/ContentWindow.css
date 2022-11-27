@@ -110,3 +110,24 @@
 .pokemon-card {
 	margin-right: 0;
 }
+
+.ant-card-meta-detail {
+	width: 100%;
+}
+
+.ant-collapse {
+	width: 100%;
+}
+
+.pokemon-type{
+	font-weight: 700;
+}
+
+.ant-collapse-content-box {
+	align-content: flex-end;
+}
+
+.ant-card-meta-title {
+	font-size: large;
+	font-weight: 900;
+}

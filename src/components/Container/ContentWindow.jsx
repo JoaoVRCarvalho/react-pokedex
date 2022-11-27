@@ -8,8 +8,6 @@ function PokedexContainer() {
 	const [ buffer, setBuffer ] = useState([]);
 	const [search, setSearch] = useState("");
 
-
-
 	useEffect(() => {
 		const fetchData = async () => {
 			fetch("https://pokeapi.co/api/v2/pokemon?limit=151")

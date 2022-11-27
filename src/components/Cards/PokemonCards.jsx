@@ -33,7 +33,6 @@ function PokemonCards({ pokemons, search }) {
 						cover={<img alt="pokemon-image" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} />}
 					>
 						<Meta
-							className='Card-meta-class'
 							title={toCapitalLetter(pokemon.name)}
 							description={
 							<Collapse
@@ -43,7 +42,10 @@ function PokemonCards({ pokemons, search }) {
 							>
 								<Panel header={"Types"}>
 									{pokemon.types.map((type, idx) => (
-										<p key={idx}>
+										<p
+											className='pokemon-type'
+											key={idx}
+										>
 											{toCapitalLetter(type.type.name)}
 										</p>
 									))}

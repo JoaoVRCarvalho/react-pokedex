@@ -12,7 +12,7 @@ function SearchBar(props) {
 				className='Searchbar'
 				placeholder="Search pokemon..."
 				onChange={e => handleSearch(e)}
-				size="large"
+ 				size="large"
 				enterButton
 			/>
 		</Space>
