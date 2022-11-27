@@ -1,2 +1,3 @@
 # Pokedex feita em react
-## https://JoaoVRCarvalho.github.io/react-pokedex
+Versão "estável" da pokedex, ainda não responsiva
+### https://JoaoVRCarvalho.github.io/react-pokedex
