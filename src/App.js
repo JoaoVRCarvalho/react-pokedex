@@ -1,21 +1,21 @@
 import { React, useEffect, useState } from 'react'
 import Background from './components/BackgroundImage/BackgroundImage';
 import PokedexContainer from './components/Container/ContentWindow';
+import PokemonDetails from './components/Modal/Modal';
 
 function App() {
 	const [pokemons, setPokemons] = useState([]);
 	const [buffer, setBuffer] = useState([]);
-
 	const [open, setOpen] = useState(false);
 
-	const handleClick = (e) => {
-		console.log(e);
-		setOpen(!open);
+	const handleModal = (pokemon) => {
+		// console.log(pokemon);
+		setOpen(!open)
 	}
 
 	useEffect(() => {
 		const fetchData = async () => {
-			fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+			fetch("https://pokeapi.co/api/v2/pokemon?limit=13")
 				.then((res) => res.json())
 				.then((data) => {
 					const { results } = data;
@@ -38,7 +38,12 @@ function App() {
 			<PokedexContainer
 				buffer={buffer}
 				pokemons={pokemons}
-				handleClick={handleClick}
+				handleModal={handleModal}
+			/>
+			<PokemonDetails
+				open={open}
+				setOpen={setOpen}
+				buffer={buffer}
 			/>
 		</>
 	);
