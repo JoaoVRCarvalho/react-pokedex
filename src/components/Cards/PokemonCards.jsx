@@ -34,7 +34,6 @@ function PokemonCards({ pokemons, search, handleModal }) {
 						cover={<img alt="pokemon-image" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} />}
 					>
 						<Meta
-							className='Card-meta-class'
 							title={toCapitalLetter(pokemon.name)}
 							description={
 								<>
