@@ -52,10 +52,12 @@ function PokemonCards({ pokemons, search, handleModal }) {
 										</Panel>
 									</Collapse>
 									<Button
+										className='pokemon-details-button'
 										type="primary"
+										danger
 										onClick={() => handleModal(pokemon)}
 									>
-										Primary Button
+										Details!
 									</Button>
 								</>
 							}
