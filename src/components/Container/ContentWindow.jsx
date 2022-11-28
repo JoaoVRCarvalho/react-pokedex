@@ -21,7 +21,7 @@ function PokedexContainer(props) {
 				<PokemonCards
 					pokemons={props.buffer}
 					search={search}
-					handleCLick={props.handleClick}
+					handleModal={props.handleModal}
 				/>
 			</div>
 		</div>
