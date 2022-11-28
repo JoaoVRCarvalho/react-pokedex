@@ -1,33 +1,10 @@
-import { React, useEffect, useState } from 'react'
+import { React, useState } from 'react'
 import PokemonCards from '../Cards/PokemonCards';
 import SearchBar from '../Searchbar/SearchBar';
 import "./ContentWindow.css"
 
-function PokedexContainer() {
-	const [pokemons, setPokemons] = useState([]);
-	const [ buffer, setBuffer ] = useState([]);
+function PokedexContainer(props) {
 	const [search, setSearch] = useState("");
-
-
-
-	useEffect(() => {
-		const fetchData = async () => {
-			fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
-				.then((res) => res.json())
-				.then((data) => {
-					const { results } = data;
-					let promiseArr = results.map(result => {
-						return fetch(result.url).then(res => res.json())
-					})
-					return Promise.all(promiseArr);
-				}).then(data => {
-					setPokemons(data)
-					setBuffer(data)
-				})
-		}
-		fetchData();
-	}, []);
-
 
 	return (
 		<div className='container'>
@@ -35,15 +12,16 @@ function PokedexContainer() {
 				POKEDEX!
 				<i className='icon' />
 			</h1>
-			<SearchBar 
-				buffer={buffer} 
-				pokemons={pokemons}
+			<SearchBar
+				buffer={props.buffer}
+				pokemons={props.pokemons}
 				setSearch={setSearch}
 			/>
 			<div className='search-cards-wrapper'>
 				<PokemonCards
-					pokemons={buffer}
+					pokemons={props.buffer}
 					search={search}
+					handleModal={props.handleModal}
 				/>
 			</div>
 		</div>

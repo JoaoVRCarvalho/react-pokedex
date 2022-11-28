@@ -102,11 +102,34 @@
 	background-color: #a8bbbf;
 }
 
-
 .card-col {
 	padding: 16px;
 }
 
 .pokemon-card {
 	margin-right: 0;
+}
+
+.Card-meta-class {
+	display: contents;
+}
+
+.pokemon-details-button {
+	height: 45px;
+	width: 100%;
+	margin-top: 15px;
+	background: rgba(254, 1, 1, 255);
+	border: rgba(254, 1, 1, 255);
+}
+
+.pokemon-details-button::selection {
+	background: rgb(164, 4, 4);
+}
+
+.pokemon-details-button:hover {
+	background: rgb(164, 4, 4);
+}
+
+.pokemon-details-button:focus {
+	border-color: rgba(254, 1, 1, 255);
 }
