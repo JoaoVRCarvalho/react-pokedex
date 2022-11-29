@@ -5,11 +5,12 @@ import PokemonDetails from './components/Modal/Modal';
 
 function App() {
 	const [pokemons, setPokemons] = useState([]);
+	const [displayedPokemon, setDisplayedPokemon] = useState({});
 	const [buffer, setBuffer] = useState([]);
 	const [open, setOpen] = useState(false);
 
 	const handleModal = (pokemon) => {
-		// console.log(pokemon);
+		setDisplayedPokemon(prevState => pokemon);
 		setOpen(!open)
 	}
 
@@ -43,7 +44,7 @@ function App() {
 			<PokemonDetails
 				open={open}
 				setOpen={setOpen}
-				buffer={buffer}
+				displayedPokemon={displayedPokemon}
 			/>
 		</>
 	);
