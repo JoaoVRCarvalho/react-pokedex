@@ -1,11 +1,11 @@
 import { React } from 'react'
 import { Modal } from 'antd'
 
-function PokemonDetails({ buffer, open, setOpen }) {
+function PokemonDetails({ displayedPokemon, open, setOpen }) {
 
 	return (
 		<Modal
-			title={"teste"}
+			title={displayedPokemon.name}
 			open={open}
 			onCancel={() => setOpen(!open)}
 			height={500}
