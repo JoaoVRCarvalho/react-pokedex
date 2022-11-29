@@ -57,7 +57,7 @@ function PokemonCards({ pokemons, search, handleModal }) {
 										danger
 										onClick={() => handleModal(pokemon)}
 									>
-										Details!
+										More!
 									</Button>
 								</>
 							}
