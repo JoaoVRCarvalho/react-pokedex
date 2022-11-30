@@ -44,7 +44,7 @@ function App() {
 			<PokemonDetails
 				open={open}
 				setOpen={setOpen}
-				displayedPokemon={displayedPokemon}
+				pokemon={displayedPokemon}
 			/>
 		</>
 	);
