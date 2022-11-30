@@ -17,39 +17,37 @@ function App() {
 		setOpen(!open)
 	}
 
-	// Get the pokemon array
-	useEffect(() => {
-		const fetchData = async () => {
-			fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonLimit}`)
-				.then((res) => res.json())
-				.then((data) => {
-					const { results } = data;
-					let promiseArr = results?.map(result => {
-						return fetch(result.url).then(res => res.json())
-					})
-					return Promise.all(promiseArr);
-				}).then(data => {
-					setPokemons(data)
-					setBuffer(data)
+	// Fetch pokemon data
+	const fetchData = async () => {
+		fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonLimit}`)
+			.then((res) => res.json())
+			.then((data) => {
+				const { results } = data;
+				let promiseArr = results?.map(result => {
+					return fetch(result.url).then(res => res.json())
 				})
-		}
-		fetchData();
-	}, []);
+				return Promise.all(promiseArr);
+			}).then(data => {
+				setPokemons(data)
+				setBuffer(data)
+			})
+	}
+	// Fetch types
+	const fetchTypes = async () => {
+		fetch(`https://pokeapi.co/api/v2/type/`)
+			.then((res) => res.json())
+			.then((data) => {
+				const { results } = data;
+				let promiseArr = results?.map(result => {
+					return fetch(result.url).then(res => res.json())
+				})
+				return Promise.all(promiseArr);
+			})
+			.then(data => setTypes(data))
+	}
 
-	// Get types
 	useEffect(() => {
-		const fetchTypes = async () => {
-			fetch(`https://pokeapi.co/api/v2/type/`)
-				.then((res) => res.json())
-				.then((data) => {
-					const { results } = data;
-					let promiseArr = results?.map(result => {
-						return fetch(result.url).then(res => res.json())
-					})
-					return Promise.all(promiseArr);
-				})
-				.then(data => setTypes(data))
-		}
+		fetchData();
 		fetchTypes();
 	}, []);
 
