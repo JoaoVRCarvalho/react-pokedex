@@ -33,6 +33,10 @@ function PokemonDetails({ pokemon, open, setOpen }) {
 
 			<div>
 				<p>
+					{`Base experience: ${pokemon.base_experience}`}
+				</p>
+
+				<p>
 					{`Height: ${pokemon.height / 10}`}
 				</p>
 
