@@ -39,6 +39,7 @@ function PokemonCards({ pokemons, search, handleModal }) {
 						}
 					>
 						<Meta
+							className='Card-meta-class'
 							title={toCapitalLetter(pokemon.name)}
 							description={
 								<>

@@ -106,12 +106,8 @@
 	padding: 16px;
 }
 
-.pokemon-card {
-	margin-right: 0;
-}
-
-.antd-card-meta {
-	flex-direction: column-reverse;
+.Card-meta-class {
+	display: contents;
 }
 
 .pokemon-details-button {
