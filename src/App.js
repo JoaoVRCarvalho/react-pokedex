@@ -3,7 +3,7 @@ import Background from './components/BackgroundImage/BackgroundImage';
 import PokedexContainer from './components/Container/ContentWindow';
 import PokemonDetails from './components/Modal/Modal';
 
-const pokemonLimit = 13;
+const pokemonLimit = 3;
 
 function App() {
 	const [pokemons, setPokemons] = useState([]);
@@ -32,6 +32,7 @@ function App() {
 				setBuffer(data)
 			})
 	}
+
 	// Fetch types
 	const fetchTypes = async () => {
 		fetch(`https://pokeapi.co/api/v2/type/`)
@@ -49,6 +50,8 @@ function App() {
 	useEffect(() => {
 		fetchData();
 		fetchTypes();
+		console.log(pokemons);
+		console.log(types);
 	}, []);
 
 	return (
