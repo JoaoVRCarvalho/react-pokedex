@@ -31,7 +31,12 @@ function PokemonCards({ pokemons, search, handleModal }) {
 					<Card
 						className='pokemon-card'
 						hoverable
-						cover={<img alt="pokemon-image" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} />}
+						cover={
+							<img
+								alt="pokemon-image"
+								src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
+							/>
+						}
 					>
 						<Meta
 							title={toCapitalLetter(pokemon.name)}
