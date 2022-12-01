@@ -1,7 +1,7 @@
 import { React } from 'react'
 import { Modal } from 'antd'
 
-function PokemonDetails({ pokemon, open, setOpen }) {
+function PokemonDetails({ pokemon, open, setOpen, getDmgRelations, types }) {
 
 	const toCapitalLetter = name => {
 		return name.charAt(0).toUpperCase() + name.slice(1)
@@ -21,12 +21,13 @@ function PokemonDetails({ pokemon, open, setOpen }) {
 				src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
 			/>
 
-			{pokemon.types?.map((type, idx) => {
-				console.log(type.type); // contem a url
+			{pokemon.types?.map((pokemonType, idx) => {
+				let dmgRelations = getDmgRelations(pokemon.types, types);
+				console.log(dmgRelations);
 
 				return (
 					<p key={idx} >
-						{toCapitalLetter(type.type.name)}
+						{toCapitalLetter(pokemonType.type.name)}
 					</p>
 				)
 			})}
