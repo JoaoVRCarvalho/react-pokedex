@@ -18,7 +18,7 @@ function App() {
 	}
 
 	// Fetch pokemon data
-	const fetchData = async () => {
+	async function fetchData() {
 		fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonLimit}`)
 			.then((res) => res.json())
 			.then((data) => {
@@ -28,13 +28,13 @@ function App() {
 				})
 				return Promise.all(promiseArr);
 			}).then(data => {
-				setPokemons(data)
-				setBuffer(data)
+				setPokemons(data);
+				setBuffer(data);
 			})
 	}
 
 	// Fetch types
-	const fetchTypes = async () => {
+	async function fetchTypes() {
 		fetch(`https://pokeapi.co/api/v2/type/`)
 			.then((res) => res.json())
 			.then((data) => {
@@ -50,9 +50,19 @@ function App() {
 	useEffect(() => {
 		fetchData();
 		fetchTypes();
-		console.log(pokemons);
-		console.log(types);
 	}, []);
+
+	const getDmgRelations = (pokemonTypes, typesArr) => {
+		let dmgRelations = [];
+		pokemonTypes.map((type) => {
+			typesArr.map((typeInfo) => {
+				if (type.type.name.toLowerCase() === typeInfo.name.toLowerCase()) {
+					dmgRelations.push(typeInfo.damage_relations); //damage relations é o obj com todas as fraquezas e vantagens.
+				}
+			})
+		})
+		return dmgRelations;
+	}
 
 	return (
 		<>
@@ -66,6 +76,8 @@ function App() {
 				open={open}
 				setOpen={setOpen}
 				pokemon={displayedPokemon}
+				getDmgRelations={getDmgRelations}
+				types={types}
 			/>
 		</>
 	);
