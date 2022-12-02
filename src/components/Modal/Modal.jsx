@@ -1,10 +1,48 @@
 import { React } from 'react'
 import { Modal } from 'antd'
 
-function PokemonDetails({ pokemon, open, setOpen, getDmgRelations, types }) {
+function PokemonDetails({ pokemon, open, setOpen, types }) {
 
 	const toCapitalLetter = name => {
 		return name.charAt(0).toUpperCase() + name.slice(1)
+	}
+
+	const getDmgRelations = (pokemonTypes, typesArr) => {
+		let dmgRelations = [];
+		pokemonTypes.map((type) => {
+			typesArr.map((typeInfo) => {
+				if (type.type.name.toLowerCase() === typeInfo.name.toLowerCase()) {
+					dmgRelations.push(typeInfo.damage_relations); //damage relations é o obj com todas as fraquezas e vantagens.
+				}
+			})
+		})
+		return dmgRelations;
+	}
+
+	/*
+	Object.entries(items).map(item => {
+		console.log(item)
+	})
+	*/
+
+	// para cada entry no array feito em object.entries eu itero a partir do um
+	const getWeaknesses = (relations) => {
+		let relationsArr = [];
+		relations.map((damage, idx) => {
+			Object.entries(damage).map(prop => {
+				// console.log(prop);
+			})
+
+			// let {
+			// 	double_damage_from,
+			// 	double_damage_to,
+			// 	half_damage_from,
+			// 	half_damage_to,
+			// 	no_damage_from,
+			// 	no_damage_to
+			// } = damage;
+
+		})
 	}
 
 	return (
@@ -23,7 +61,7 @@ function PokemonDetails({ pokemon, open, setOpen, getDmgRelations, types }) {
 
 			{pokemon.types?.map((pokemonType, idx) => {
 				let dmgRelations = getDmgRelations(pokemon.types, types);
-				console.log(dmgRelations);
+				getWeaknesses(dmgRelations);
 
 				return (
 					<p key={idx} >
