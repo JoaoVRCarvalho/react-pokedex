@@ -1,7 +1,14 @@
-import { React } from 'react'
+import { React, useState, useEffect } from 'react'
 import { Modal } from 'antd'
 
 function PokemonDetails({ pokemon, open, setOpen, types }) {
+	// Damage effectiviness
+	const [doubleDmgFrom, setDoubleDmgFrom] = useState([]);
+	const [doubleDmgTo, setDoubleDmgTo] = useState([]);
+	const [halfDmgFrom, setHalfDmgFrom] = useState([]);
+	const [halfDmgTo, setHalfDmgTo] = useState([]);
+	const [noDmgFrom, setNoDmgFrom] = useState([]);
+	const [noDmgTo, setNoDmgTo] = useState([]);
 
 	const toCapitalLetter = name => {
 		return name.charAt(0).toUpperCase() + name.slice(1)
@@ -9,7 +16,7 @@ function PokemonDetails({ pokemon, open, setOpen, types }) {
 
 	const getDmgRelations = (pokemonTypes, typesArr) => {
 		let dmgRelations = [];
-		pokemonTypes.map((type) => {
+		pokemonTypes?.map((type) => {
 			typesArr.map((typeInfo) => {
 				if (type.type.name.toLowerCase() === typeInfo.name.toLowerCase()) {
 					dmgRelations.push(typeInfo.damage_relations); //damage relations é o obj com todas as fraquezas e vantagens.
@@ -19,31 +26,61 @@ function PokemonDetails({ pokemon, open, setOpen, types }) {
 		return dmgRelations;
 	}
 
-	/*
-	Object.entries(items).map(item => {
-		console.log(item)
-	})
-	*/
-
 	// para cada entry no array feito em object.entries eu itero a partir do um
 	const getWeaknesses = (relations) => {
-		let relationsArr = [];
 		relations.map((damage, idx) => {
 			Object.entries(damage).map(prop => {
-				// console.log(prop);
+				let bufferArr = [];
+				switch (prop[0]){
+					case "double_damage_from":
+						prop[1].forEach(weaknessObj => {
+							bufferArr.push(weaknessObj);
+						});
+						setDoubleDmgFrom(bufferArr);
+						break;
+					case "double_damage_to":
+						prop[1].forEach(weaknessObj => {
+							bufferArr.push(weaknessObj);
+						});
+						setDoubleDmgTo(bufferArr);
+						break;
+					case "half_damage_from":
+						prop[1].forEach(weaknessObj => {
+							bufferArr.push(weaknessObj);
+						});
+						setHalfDmgFrom(bufferArr);
+						break;
+					case "half_damage_to":
+						prop[1].forEach(weaknessObj => {
+							bufferArr.push(weaknessObj);
+						});
+						setHalfDmgTo(bufferArr);
+						break;
+					case "no_damage_from":
+						prop[1].forEach(weaknessObj => {
+							bufferArr.push(weaknessObj);
+						});
+						setNoDmgFrom(bufferArr);
+						break;
+					case "no_damage_to":
+						prop[1].forEach(weaknessObj => {
+							bufferArr.push(weaknessObj);
+						});
+						setNoDmgTo(bufferArr);
+						break;
+					default:
+						console.log("Algo deu errado.");
+				}
 			})
-
-			// let {
-			// 	double_damage_from,
-			// 	double_damage_to,
-			// 	half_damage_from,
-			// 	half_damage_to,
-			// 	no_damage_from,
-			// 	no_damage_to
-			// } = damage;
-
 		})
 	}
+
+	useEffect(() => {
+		let dmgRelations
+		dmgRelations = getDmgRelations(pokemon.types, types);
+		getWeaknesses(dmgRelations);
+		console.log(doubleDmgFrom);
+	}, []);
 
 	return (
 		<Modal
@@ -60,8 +97,7 @@ function PokemonDetails({ pokemon, open, setOpen, types }) {
 			/>
 
 			{pokemon.types?.map((pokemonType, idx) => {
-				let dmgRelations = getDmgRelations(pokemon.types, types);
-				getWeaknesses(dmgRelations);
+				// getWeaknesses(dmgRelations);
 
 				return (
 					<p key={idx} >
