@@ -52,18 +52,6 @@ function App() {
 		fetchTypes();
 	}, []);
 
-	const getDmgRelations = (pokemonTypes, typesArr) => {
-		let dmgRelations = [];
-		pokemonTypes.map((type) => {
-			typesArr.map((typeInfo) => {
-				if (type.type.name.toLowerCase() === typeInfo.name.toLowerCase()) {
-					dmgRelations.push(typeInfo.damage_relations); //damage relations é o obj com todas as fraquezas e vantagens.
-				}
-			})
-		})
-		return dmgRelations;
-	}
-
 	return (
 		<>
 			<Background />
@@ -76,7 +64,6 @@ function App() {
 				open={open}
 				setOpen={setOpen}
 				pokemon={displayedPokemon}
-				getDmgRelations={getDmgRelations}
 				types={types}
 			/>
 		</>
