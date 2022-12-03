@@ -28,50 +28,16 @@ function PokemonDetails({ pokemon, open, setOpen, types }) {
 
 	// para cada entry no array feito em object.entries eu itero a partir do um
 	const getWeaknesses = (relations) => {
-		relations.map((damage, idx) => {
-			Object.entries(damage).map(prop => {
-				let bufferArr = [];
-				switch (prop[0]){
-					case "double_damage_from":
-						prop[1].forEach(weaknessObj => {
-							bufferArr.push(weaknessObj);
-						});
-						setDoubleDmgFrom(bufferArr);
-						break;
-					case "double_damage_to":
-						prop[1].forEach(weaknessObj => {
-							bufferArr.push(weaknessObj);
-						});
-						setDoubleDmgTo(bufferArr);
-						break;
-					case "half_damage_from":
-						prop[1].forEach(weaknessObj => {
-							bufferArr.push(weaknessObj);
-						});
-						setHalfDmgFrom(bufferArr);
-						break;
-					case "half_damage_to":
-						prop[1].forEach(weaknessObj => {
-							bufferArr.push(weaknessObj);
-						});
-						setHalfDmgTo(bufferArr);
-						break;
-					case "no_damage_from":
-						prop[1].forEach(weaknessObj => {
-							bufferArr.push(weaknessObj);
-						});
-						setNoDmgFrom(bufferArr);
-						break;
-					case "no_damage_to":
-						prop[1].forEach(weaknessObj => {
-							bufferArr.push(weaknessObj);
-						});
-						setNoDmgTo(bufferArr);
-						break;
-					default:
-						console.log("Algo deu errado.");
-				}
-			})
+		relations.map((damage) => {
+			let {
+				double_damage_from: doubleDmgFrom,
+				double_damage_to: doubleDmgTo,
+				half_damage_from: halfDmgFrom,
+				half_damage_to: halfDmgTo,
+				no_damage_from: noDmgFrom,
+				no_damage_to: noDmgTo,
+			} = damage;
+			console.log(doubleDmgFrom[0].name);
 		})
 	}
 
@@ -79,7 +45,6 @@ function PokemonDetails({ pokemon, open, setOpen, types }) {
 		let dmgRelations
 		dmgRelations = getDmgRelations(pokemon.types, types);
 		getWeaknesses(dmgRelations);
-		console.log(doubleDmgFrom);
 	}, []);
 
 	return (
