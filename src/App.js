@@ -3,7 +3,7 @@ import Background from './components/BackgroundImage/BackgroundImage';
 import PokedexContainer from './components/Container/ContentWindow';
 import PokemonDetails from './components/Modal/Modal';
 
-const pokemonLimit = 3;
+const pokemonLimit = 4;
 
 function App() {
 	const [pokemons, setPokemons] = useState([]);
