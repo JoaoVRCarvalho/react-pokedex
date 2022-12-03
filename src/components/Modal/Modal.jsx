@@ -1,14 +1,11 @@
 import { React, useState, useEffect } from 'react'
 import { Modal } from 'antd'
 
+
+// Para cada tipo guardar suas fraquezas em um array. IMPORTANTE**
+// Separar as fraquezas de tipos como fraquezas de pokemon
 function PokemonDetails({ pokemon, open, setOpen, types }) {
-	// Damage effectiviness
-	const [doubleDmgFrom, setDoubleDmgFrom] = useState([]);
-	const [doubleDmgTo, setDoubleDmgTo] = useState([]);
-	const [halfDmgFrom, setHalfDmgFrom] = useState([]);
-	const [halfDmgTo, setHalfDmgTo] = useState([]);
-	const [noDmgFrom, setNoDmgFrom] = useState([]);
-	const [noDmgTo, setNoDmgTo] = useState([]);
+	const [weakness, setWeakness] = useState([]);
 
 	const toCapitalLetter = name => {
 		return name.charAt(0).toUpperCase() + name.slice(1)
@@ -16,8 +13,8 @@ function PokemonDetails({ pokemon, open, setOpen, types }) {
 
 	const getDmgRelations = (pokemonTypes, typesArr) => {
 		let dmgRelations = [];
-		pokemonTypes?.map((type) => {
-			typesArr.map((typeInfo) => {
+		pokemonTypes?.forEach((type) => {
+			typesArr.forEach((typeInfo) => {
 				if (type.type.name.toLowerCase() === typeInfo.name.toLowerCase()) {
 					dmgRelations.push(typeInfo.damage_relations); //damage relations é o obj com todas as fraquezas e vantagens.
 				}
@@ -28,24 +25,14 @@ function PokemonDetails({ pokemon, open, setOpen, types }) {
 
 	// para cada entry no array feito em object.entries eu itero a partir do um
 	const getWeaknesses = (relations) => {
-		relations.map((damage) => {
-			let {
-				double_damage_from: doubleDmgFrom,
-				double_damage_to: doubleDmgTo,
-				half_damage_from: halfDmgFrom,
-				half_damage_to: halfDmgTo,
-				no_damage_from: noDmgFrom,
-				no_damage_to: noDmgTo,
-			} = damage;
-			console.log(doubleDmgFrom[0].name);
-		})
+		let bufferArr = relations.map((damage) => (Object.values(damage)));
+		return bufferArr;
 	}
 
 	useEffect(() => {
-		let dmgRelations
-		dmgRelations = getDmgRelations(pokemon.types, types);
-		getWeaknesses(dmgRelations);
-	}, []);
+		let dmgRelations = getDmgRelations(pokemon.types, types);
+		setWeakness(getWeaknesses(dmgRelations));
+	}, [pokemon.types, types]);
 
 	return (
 		<Modal
@@ -57,18 +44,23 @@ function PokemonDetails({ pokemon, open, setOpen, types }) {
 			centered
 		>
 			<img
-				alt="pokemon-image"
+				alt="pokemon"
 				src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
 			/>
 
 			{pokemon.types?.map((pokemonType, idx) => {
-				// getWeaknesses(dmgRelations);
-
 				return (
 					<p key={idx} >
 						{toCapitalLetter(pokemonType.type.name)}
 					</p>
 				)
+			})}
+
+			{weakness.forEach((weaknessArr) => {
+				weaknessArr.map((weakness, idx) => {
+					if(weakness.length !== 0)
+					console.log(weakness)
+				})
 			})}
 
 			<div>
