@@ -57,6 +57,7 @@ function PokemonCards({ pokemons, search, handleModal }) {
 										className='pokemon-details-button'
 										type="primary"
 										danger
+										disabled
 										onClick={() => handleModal(pokemon)}
 									>
 										Details!
