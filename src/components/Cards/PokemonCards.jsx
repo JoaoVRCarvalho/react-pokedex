@@ -43,26 +43,23 @@ function PokemonCards({ pokemons, search, handleModal }) {
 							title={toCapitalLetter(pokemon.name)}
 							description={
 								<>
-									<Collapse
-										key={idx}
-										bordered={false}
-										ghost={false}
-									>
-										<Panel header={"Types"}>
-											{pokemon.types.map((type, idx) => (
-												<p key={idx}>
-													{toCapitalLetter(type.type.name)}
-												</p>
-											))}
-										</Panel>
-									</Collapse>
+									<div className='types-wrapper'>
+										{pokemon.types.map((type, idx) => (
+											<span
+												key={idx}
+												className={`pokemon-type-${type.type.name} pokemon-type`}
+											>
+												{toCapitalLetter(type.type.name)}
+											</span>
+										))}
+									</div>
 									<Button
 										className='pokemon-details-button'
 										type="primary"
 										danger
 										onClick={() => handleModal(pokemon)}
 									>
-										More!
+										Details!
 									</Button>
 								</>
 							}
