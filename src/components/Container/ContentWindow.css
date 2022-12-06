@@ -46,6 +46,7 @@
 
 .Searchbar {
 	/* margin-bottom: 20px; */
+	border-radius: 10px;
 	margin-left: 25px;
 }
 
@@ -102,16 +103,33 @@
 	background-color: #a8bbbf;
 }
 
+.ant-card-meta-title {
+	display: flex;
+	justify-content: space-around;
+	font-size: x-large;
+}
+
 .card-col {
 	padding: 16px;
+}
+
+.pokemon-card {
+	border-radius: 25px;
 }
 
 .Card-meta-class {
 	display: contents;
 }
 
+.types-wrapper {
+	display: flex;
+	justify-content: space-evenly;
+}
+
 .pokemon-details-button {
-	height: 45px;
+	font-size: large;
+	border-radius: 100px;
+	height: 35px;
 	width: 100%;
 	margin-top: 15px;
 	background: rgba(254, 1, 1, 255);
@@ -128,4 +146,88 @@
 
 .pokemon-details-button:focus {
 	border-color: rgba(254, 1, 1, 255);
+}
+
+.pokemon-type {
+	width: 75px;
+	display: flex;
+	justify-content: center;
+
+	border-radius: 100px;
+	color: white;
+	font-size: medium;
+}
+
+/* Types colors */
+
+.pokemon-type-normal {
+	background-color: rgba(168, 168, 120, 255);
+}
+
+.pokemon-type-grass {
+	background-color: rgba(120, 200, 80, 255);
+}
+
+.pokemon-type-fire {
+	background-color: rgba(240, 128, 48, 255);
+}
+
+.pokemon-type-water {
+	background-color: rgba(104, 144, 240, 255);
+}
+
+.pokemon-type-flying {
+	background-color: rgba(168, 144, 240, 255);
+}
+
+.pokemon-type-bug {
+	background-color: rgba(168, 184, 32, 255);
+}
+
+.pokemon-type-poison {
+	background-color: rgba(160, 64, 160, 255);
+}
+
+.pokemon-type-ground {
+	background-color: rgba(152, 216, 216, 255);
+}
+
+.pokemon-type-electric {
+	background-color: #f8d030;
+}
+
+.pokemon-type-fighting {
+	background-color: rgba(192, 48, 40, 255);
+}
+
+.pokemon-type-psychic {
+	background-color: rgba(237, 15, 100, 255);
+}
+
+.pokemon-type-rock {
+	background-color: rgba(184, 160, 56, 255);
+}
+
+.pokemon-type-ice {
+	background-color: rgba(224, 192, 104, 255);
+}
+
+.pokemon-type-ghost {
+	background-color: rgba(112, 88, 152, 255);
+}
+
+.pokemon-type-dragon {
+	background-color: rgba(112, 56, 248, 255);
+}
+
+.pokemon-type-dark {
+	background-color: rgba(112, 88, 72, 255);
+}
+
+.pokemon-type-steel {
+	background-color: rgba(184, 184, 208, 255);
+}
+
+.pokemon-type-fairy {
+	background-color: rgba(255, 174, 201, 255);
 }
