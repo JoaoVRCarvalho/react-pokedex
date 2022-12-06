@@ -46,8 +46,16 @@
 
 .Searchbar {
 	/* margin-bottom: 20px; */
-	border-radius: 10px;
 	margin-left: 25px;
+}
+
+.ant-input {
+	border-radius: 20px;
+}
+
+
+.ant-input-search>.ant-input-group>.ant-input-group-addon:last-child .ant-input-search-button {
+	border-radius: 0 20px 20px 0;
 }
 
 .Searchbar .ant-input:hover {
