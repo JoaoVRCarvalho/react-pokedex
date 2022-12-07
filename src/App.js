@@ -10,6 +10,7 @@ function App() {
 	const [buffer, setBuffer] = useState([]);
 	const [types, setTypes] = useState([]);
 
+	const [isCardsLoading, setIsCardsLoading] = useState(true);
 	const [displayedPokemon, setDisplayedPokemon] = useState({});
 	const [open, setOpen] = useState(false);
 
@@ -30,6 +31,7 @@ function App() {
 			}).then(data => {
 				setPokemons(data);
 				setBuffer(data);
+				setIsCardsLoading(!isCardsLoading);
 			})
 	}
 
@@ -58,6 +60,7 @@ function App() {
 				buffer={buffer}
 				pokemons={pokemons}
 				handleModal={handleModal}
+				isCardsLoading={isCardsLoading}
 			/>
 			<PokemonDetails
 				open={open}
