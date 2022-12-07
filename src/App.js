@@ -7,9 +7,10 @@ const pokemonLimit = 151;
 
 function App() {
 	const [pokemons, setPokemons] = useState([]);
-	const [types, setTypes] = useState([]);
-	const [displayedPokemon, setDisplayedPokemon] = useState({});
 	const [buffer, setBuffer] = useState([]);
+	const [types, setTypes] = useState([]);
+
+	const [displayedPokemon, setDisplayedPokemon] = useState({});
 	const [open, setOpen] = useState(false);
 
 	const handleModal = (pokemon) => {
@@ -17,7 +18,6 @@ function App() {
 		setOpen(!open)
 	}
 
-	// Fetch pokemon data
 	async function fetchData() {
 		fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonLimit}`)
 			.then((res) => res.json())
@@ -33,7 +33,6 @@ function App() {
 			})
 	}
 
-	// Fetch types
 	async function fetchTypes() {
 		fetch(`https://pokeapi.co/api/v2/type/`)
 			.then((res) => res.json())
@@ -49,7 +48,7 @@ function App() {
 
 	useEffect(() => {
 		fetchData();
-		fetchTypes();
+		// fetchTypes(); ### DISABLED
 	}, []);
 
 	return (
@@ -64,7 +63,7 @@ function App() {
 				open={open}
 				setOpen={setOpen}
 				pokemon={displayedPokemon}
-				types={types}
+			// types={types} ### DISABLED
 			/>
 		</>
 	);
