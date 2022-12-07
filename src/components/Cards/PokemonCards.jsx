@@ -1,4 +1,4 @@
-import { React, lazy, Suspense, useState } from 'react'
+import { React, lazy, Suspense } from 'react'
 import { Row, Col, Button } from 'antd';
 
 import LoadingCards from '../_loadingComponents/Cards';
@@ -38,7 +38,7 @@ function PokemonCards({ pokemons, search, handleModal, isLoading }) {
 							hoverable
 							cover={
 								<img
-									alt="pokemon-image"
+									alt="pokemon"
 									src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
 								/>
 							}

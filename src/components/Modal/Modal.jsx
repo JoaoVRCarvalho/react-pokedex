@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react'
+import { React } from 'react'
 import { Modal } from 'antd'
 
 function PokemonDetails({ pokemon, open, setOpen, types }) {

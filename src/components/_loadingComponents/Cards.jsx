@@ -12,21 +12,23 @@ const LoadingCards = ({ loadingState }) => {
 			cover={
 				<Skeleton.Image
 					className='cards-img-skeleton'
+					size={"large"}
 					active
 				/>
 			}
 		>
+
 			<Meta
 				className='Card-meta-class card-meta-skeleton'
 				description={
 					<Skeleton
 						className='cards-desc-skeleton'
+						size={"large"}
 						title={true}
-						loading={loadingState}
-						active
 						paragraph={{
 							rows: 3,
 						}}
+						active
 					/>
 				}
 			/>
