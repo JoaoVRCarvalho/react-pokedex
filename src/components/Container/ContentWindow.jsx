@@ -19,6 +19,7 @@ function PokedexContainer(props) {
 			/>
 			<div className='search-cards-wrapper'>
 				<PokemonCards
+					isLoading={props.isCardsLoading}
 					pokemons={props.buffer}
 					search={search}
 					handleModal={props.handleModal}
