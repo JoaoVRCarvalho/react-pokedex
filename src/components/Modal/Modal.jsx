@@ -1,9 +1,6 @@
 import { React, useState, useEffect } from 'react'
 import { Modal } from 'antd'
 
-
-// Para cada tipo guardar suas fraquezas em um array. IMPORTANTE**
-// Separar as fraquezas de tipos como fraquezas de pokemon
 function PokemonDetails({ pokemon, open, setOpen, types }) {
 	// const [weakness, setWeakness] = useState([]);
 
