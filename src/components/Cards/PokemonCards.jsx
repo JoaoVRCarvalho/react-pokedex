@@ -1,10 +1,12 @@
-import { React } from 'react'
-import { Card, Row, Col, Collapse, Button } from 'antd';
+import { React, lazy, Suspense, useState } from 'react'
+import { Row, Col, Button } from 'antd';
 
-const { Panel } = Collapse;
-const { Meta } = Card;
+import LoadingCards from '../_loadingComponents/Cards';
 
-function PokemonCards({ pokemons, search, handleModal }) {
+const Card = lazy(() => import('antd/lib/card/index'));
+const Meta = lazy(() => import('antd/lib/card/Meta'))
+
+function PokemonCards({ pokemons, search, handleModal, isLoading }) {
 
 	const toCapitalLetter = name => {
 		return name.charAt(0).toUpperCase() + name.slice(1)
@@ -28,44 +30,47 @@ function PokemonCards({ pokemons, search, handleModal }) {
 					key={idx}
 					span={8}
 				>
-					<Card
-						className='pokemon-card'
-						hoverable
-						cover={
-							<img
-								alt="pokemon-image"
-								src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
-							/>
-						}
+					<Suspense
+						fallback={<LoadingCards loadingState={isLoading} />}
 					>
-						<Meta
-							className='Card-meta-class'
-							title={toCapitalLetter(pokemon.name)}
-							description={
-								<>
-									<div className='types-wrapper'>
-										{pokemon.types.map((type, idx) => (
-											<span
-												key={idx}
-												className={`pokemon-type-${type.type.name} pokemon-type`}
-											>
-												{toCapitalLetter(type.type.name)}
-											</span>
-										))}
-									</div>
-									<Button
-										className='pokemon-details-button'
-										type="primary"
-										danger
-										disabled
-										onClick={() => handleModal(pokemon)}
-									>
-										Details!
-									</Button>
-								</>
+						<Card
+							className='pokemon-card'
+							hoverable
+							cover={
+								<img
+									alt="pokemon-image"
+									src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
+								/>
 							}
-						/>
-					</Card>
+						>
+							<Meta
+								className='Card-meta-class'
+								title={toCapitalLetter(pokemon.name)}
+								description={
+									<>
+										<div className='types-wrapper'>
+											{pokemon.types.map((type, idx) => (
+												<span
+													key={idx}
+													className={`pokemon-type-${type.type.name} pokemon-type`}
+												>
+													{toCapitalLetter(type.type.name)}
+												</span>
+											))}
+										</div>
+										<Button
+											className='pokemon-details-button'
+											type="primary"
+											danger
+											onClick={() => handleModal(pokemon)}
+										>
+											Details!
+										</Button>
+									</>
+								}
+							/>
+						</Card>
+					</Suspense>
 				</Col>
 			))
 			}
