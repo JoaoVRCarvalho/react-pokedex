@@ -1,6 +1,6 @@
 .container {
 	background-color: aliceblue;
-	border-radius: 10px;
+	border-radius: 25px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 	max-height: 1000px;
@@ -77,7 +77,7 @@
 }
 
 .search-cards-wrapper {
-	border-radius: 10px;
+	border-radius: 25px;
 	background-color: white;
 
 	height: 825px;
@@ -85,6 +85,7 @@
 
 	overflow-y: scroll;
 
+	background-color: aliceblue;
 	transform: translate(-50%, -50%);
 	position: fixed;
 	left: 50%;
@@ -119,6 +120,7 @@
 
 .card-col {
 	padding: 16px;
+	padding-top: 0;
 }
 
 .pokemon-card {
@@ -197,7 +199,7 @@
 }
 
 .pokemon-type-ground {
-	background-color: rgba(152, 216, 216, 255);
+	background-color: rgba(224, 193, 103, 255);
 }
 
 .pokemon-type-electric {
