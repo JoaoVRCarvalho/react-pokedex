@@ -11,7 +11,7 @@ function PokemonCards({ pokemons, search, handleModal, isLoading }) {
 	const toCapitalLetter = name => {
 		return name.charAt(0).toUpperCase() + name.slice(1)
 	}
-
+	// fazer o lazy loading pegando a ROW inteira
 	return (
 		<Row
 			className='cards-pokemon-row'

@@ -4,7 +4,7 @@ import("./CardsLoading.css");
 
 const { Meta } = Card;
 
-const LoadingCards = ({ loadingState }) => {
+const LoadingCards = () => {
 
 	return (
 		<Card
