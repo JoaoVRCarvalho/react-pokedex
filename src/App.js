@@ -1,12 +1,14 @@
 import { React, useEffect, useState } from 'react'
 import useFetchPokemon from './components/_hooks/useFetchPokemon';
+import useInfiniteScroll from './components/_hooks/useInfiniteScroll';
 
 import Background from './components/BackgroundImage/BackgroundImage';
 import PokedexContainer from './components/Container/ContentWindow';
 import PokemonDetails from './components/Modal/Modal';
 
 function App() {
-	const { data: pokemons, buffer, loading } = useFetchPokemon(151);
+	const { loadRef, extraLimit: limit } = useInfiniteScroll()
+	const { data: pokemons, buffer, loading } = useFetchPokemon(limit);
 	const [types, setTypes] = useState([]);
 
 	const [displayedPokemon, setDisplayedPokemon] = useState({});
@@ -42,6 +44,7 @@ function App() {
 				pokemons={pokemons}
 				handleModal={handleModal}
 				isCardsLoading={loading}
+				loadRef={loadRef}
 			/>
 			<PokemonDetails
 				open={open}
