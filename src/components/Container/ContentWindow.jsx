@@ -25,6 +25,7 @@ function PokedexContainer(props) {
 					handleModal={props.handleModal}
 					limit={props.limit}
 					setLimit={props.setLimit}
+					loadRef={props.loadRef}
 				/>
 			</div>
 		</div>
