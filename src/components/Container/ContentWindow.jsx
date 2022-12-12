@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import PokemonCards from '../Cards/PokemonCards';
+import PokemonCardsContainer from '../Cards/PokemonCardsContainer';
 import SearchBar from '../Searchbar/SearchBar';
 import "./ContentWindow.css"
 
@@ -18,11 +18,13 @@ function PokedexContainer(props) {
 				setSearch={setSearch}
 			/>
 			<div className='search-cards-wrapper'>
-				<PokemonCards
+				<PokemonCardsContainer
 					isLoading={props.isCardsLoading}
 					pokemons={props.buffer}
 					search={search}
 					handleModal={props.handleModal}
+					limit={props.limit}
+					setLimit={props.setLimit}
 				/>
 			</div>
 		</div>

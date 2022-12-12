@@ -1,6 +1,6 @@
 import { React } from 'react'
 import { Card, Skeleton } from 'antd'
-import("./CardsLoading.css");
+import("./LoadingCards.css");
 
 const { Meta } = Card;
 

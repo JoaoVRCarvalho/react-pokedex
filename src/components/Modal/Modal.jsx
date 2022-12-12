@@ -9,7 +9,6 @@ function PokemonDetails({ pokemon, open, setOpen, types }) {
 	}
 
 	/*
-
 		### DISABLED FOR NOW
 
 		const getDmgRelations = (pokemonTypes, typesArr) => {
