@@ -1,38 +1,20 @@
 import { React, useEffect, useState } from 'react'
+import useFetchPokemon from './components/_hooks/useFetchPokemon';
+
 import Background from './components/BackgroundImage/BackgroundImage';
 import PokedexContainer from './components/Container/ContentWindow';
 import PokemonDetails from './components/Modal/Modal';
 
-const pokemonLimit = 151;
-
 function App() {
-	const [pokemons, setPokemons] = useState([]);
-	const [buffer, setBuffer] = useState([]);
+	const { data: pokemons, buffer, loading } = useFetchPokemon(20);
 	const [types, setTypes] = useState([]);
 
-	const [isCardsLoading, setIsCardsLoading] = useState(true);
 	const [displayedPokemon, setDisplayedPokemon] = useState({});
 	const [open, setOpen] = useState(false);
 
 	const handleModal = (pokemon) => {
 		setDisplayedPokemon(prevState => pokemon);
 		setOpen(!open)
-	}
-
-	async function fetchData() {
-		fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonLimit}`)
-			.then((res) => res.json())
-			.then((data) => {
-				const { results } = data;
-				let promiseArr = results?.map(result => {
-					return fetch(result.url).then(res => res.json())
-				})
-				return Promise.all(promiseArr);
-			}).then(data => {
-				setPokemons(data);
-				setBuffer(data);
-				setIsCardsLoading(!isCardsLoading);
-			})
 	}
 
 	async function fetchTypes() {
@@ -49,7 +31,6 @@ function App() {
 	}
 
 	useEffect(() => {
-		fetchData();
 		// fetchTypes(); ### DISABLED
 	}, []);
 
@@ -60,7 +41,7 @@ function App() {
 				buffer={buffer}
 				pokemons={pokemons}
 				handleModal={handleModal}
-				isCardsLoading={isCardsLoading}
+				isCardsLoading={loading}
 			/>
 			<PokemonDetails
 				open={open}
