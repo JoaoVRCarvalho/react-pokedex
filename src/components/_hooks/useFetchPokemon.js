@@ -24,9 +24,10 @@ function useFetchPokemon(limit) {
 		}, [setLoading, loading, setData, setBuffer]
 	)
 
+
 	useEffect(() => {
 		fetchData(limit);
-	}, [fetchData, limit])
+	}, [limit])
 
 	return { data, buffer, loading }
 

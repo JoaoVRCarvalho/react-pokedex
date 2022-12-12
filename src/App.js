@@ -6,7 +6,7 @@ import PokedexContainer from './components/Container/ContentWindow';
 import PokemonDetails from './components/Modal/Modal';
 
 function App() {
-	const { data: pokemons, buffer, loading } = useFetchPokemon(20);
+	const { data: pokemons, buffer, loading } = useFetchPokemon(151);
 	const [types, setTypes] = useState([]);
 
 	const [displayedPokemon, setDisplayedPokemon] = useState({});
