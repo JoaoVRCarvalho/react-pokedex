@@ -13,7 +13,7 @@ const LoadingCards = () => {
 				<Skeleton.Image
 					className='cards-img-skeleton'
 					size={"large"}
-					active
+				// active
 				/>
 			}
 		>
@@ -28,7 +28,7 @@ const LoadingCards = () => {
 						paragraph={{
 							rows: 3,
 						}}
-						active
+					// active
 					/>
 				}
 			/>

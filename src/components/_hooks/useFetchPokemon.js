@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 function useFetchPokemon(limit) {
 	const [data, setData] = useState([]);
 	const [buffer, setBuffer] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
 
 	const fetchData = useCallback(
 		async (limit) => {
@@ -17,9 +17,9 @@ function useFetchPokemon(limit) {
 					return Promise.all(promiseArr);
 				})
 				.then(data => {
-					setLoading(!loading);
 					setData(data);
 					setBuffer(data);
+					setLoading(true);
 				})
 		}, [setLoading, loading, setData, setBuffer]
 	)
