@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card, Button } from 'antd';
 
 const { Meta } = Card;
 
-function Cards({ pokemon, handleModal }) {
+function Cards({ pokemon, handleModal, idx, pokemonArr, setLastEle }) {
 
 	const toCapitalLetter = name => {
 		return name.charAt(0).toUpperCase() + name.slice(1)
 	}
+
+	useEffect(() => {
+		if (idx + 1 === pokemonArr.length) setLastEle(true);
+	})
+
 
 	return (
 		<Card
