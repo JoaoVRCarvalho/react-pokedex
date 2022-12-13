@@ -1,13 +1,12 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 
 function useInfiniteScroll() {
-	const [extraLimit, setExtraLimit] = useState(20);
+	const [extraLimit, setExtraLimit] = useState(10);
 	const loadRef = useRef(null);
 
 	const handleObserver = useCallback((entries) => {
 		const [target] = entries;
-		console.log(target)
-		if (target.isIntersecting) setExtraLimit(prev => prev + 20)
+		if (target.isIntersecting) setExtraLimit(prev => prev + 10)
 	}, [])
 
 	useEffect(() => {
@@ -18,6 +17,8 @@ function useInfiniteScroll() {
 		};
 
 		const observer = new IntersectionObserver(handleObserver, option)
+
+		console.log(loadRef.current);
 
 		if (loadRef.current) {
 			observer.observe(loadRef.current)
