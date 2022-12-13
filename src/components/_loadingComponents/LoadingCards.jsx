@@ -4,36 +4,65 @@ import("./LoadingCards.css");
 
 const { Meta } = Card;
 
-const LoadingCards = () => {
+const LoadingCards = ({ isRef }) => {
 
-	return (
-		<Card
-			className='pokemon-card pokemon-card-load'
-			cover={
-				<Skeleton.Image
-					className='cards-img-skeleton'
-					size={"large"}
-				// active
-				/>
-			}
-		>
-
-			<Meta
-				className='Card-meta-class card-meta-skeleton'
-				description={
-					<Skeleton
-						className='cards-desc-skeleton'
+	if (isRef) {
+		return (
+			<Card
+				className='pokemon-card pokemon-card-load'
+				cover={
+					<Skeleton.Image
+						className='cards-img-skeleton'
 						size={"large"}
-						title={true}
-						paragraph={{
-							rows: 3,
-						}}
-					// active
 					/>
 				}
-			/>
-		</Card>
-	)
+			>
+
+				<Meta
+					className='Card-meta-class card-meta-skeleton'
+					description={
+						<Skeleton
+							className='cards-desc-skeleton'
+							size={"large"}
+							title={true}
+							paragraph={{
+								rows: 3,
+							}}
+						/>
+					}
+				/>
+			</Card>
+		)
+	} else {
+		return (
+			<Card
+				className='pokemon-card pokemon-card-load'
+				cover={
+					<Skeleton.Image
+						className='cards-img-skeleton'
+						size={"large"}
+						active
+					/>
+				}
+			>
+
+				<Meta
+					className='Card-meta-class card-meta-skeleton'
+					description={
+						<Skeleton
+							className='cards-desc-skeleton'
+							size={"large"}
+							title={true}
+							paragraph={{
+								rows: 3,
+							}}
+							active
+						/>
+					}
+				/>
+			</Card>
+		)
+	}
 }
 
 export default LoadingCards;
