@@ -27,7 +27,7 @@ function PokemonCardsContainer(props) {
 					span={8}
 				>
 					<Suspense
-						fallback={<LoadingCards loadingState={props.isLoading} />}
+						fallback={<LoadingCards isRef={false} />}
 					>
 						<Cards
 							idx={idx}
@@ -40,7 +40,13 @@ function PokemonCardsContainer(props) {
 				</Col>
 			))
 			}
-			<div ref={props.loadRef}> Loading... </div>
+			<Col
+				ref={props.loadRef}
+				className='card-col'
+				span={8}
+			>
+				{lastEle && <LoadingCards isRef={true} />}
+			</Col>
 		</Row>
 	)
 }
