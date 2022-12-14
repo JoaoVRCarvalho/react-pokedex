@@ -18,8 +18,6 @@ function useInfiniteScroll() {
 
 		const observer = new IntersectionObserver(handleObserver, option)
 
-		console.log(loadRef.current);
-
 		if (loadRef.current) {
 			observer.observe(loadRef.current)
 		};

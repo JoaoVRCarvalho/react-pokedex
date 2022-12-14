@@ -8,7 +8,10 @@ function useFetchPokemon(limit) {
 	const fetchData = useCallback(
 		async (limit) => {
 			fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
-				.then((res) => res.json())
+				.then((res) => {
+					setLoading(true);
+					return res.json()
+				})
 				.then((data) => {
 					const { results } = data;
 					let promiseArr = results?.map(result => {
@@ -19,7 +22,7 @@ function useFetchPokemon(limit) {
 				.then(data => {
 					setData(data);
 					setBuffer(data);
-					setLoading(true);
+					setLoading(false);
 				})
 		}, [setLoading, loading, setData, setBuffer]
 	)
@@ -30,7 +33,6 @@ function useFetchPokemon(limit) {
 	}, [limit])
 
 	return { data, buffer, loading }
-
 }
 
 export default useFetchPokemon;

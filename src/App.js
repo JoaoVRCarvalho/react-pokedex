@@ -19,6 +19,7 @@ function App() {
 		setOpen(!open)
 	}
 
+	/*
 	async function fetchTypes() {
 		fetch(`https://pokeapi.co/api/v2/type/`)
 			.then((res) => res.json())
@@ -31,6 +32,7 @@ function App() {
 			})
 			.then(data => setTypes(data))
 	}
+*/
 
 	useEffect(() => {
 		// fetchTypes(); ### DISABLED
@@ -43,7 +45,7 @@ function App() {
 				buffer={buffer}
 				pokemons={pokemons}
 				handleModal={handleModal}
-				isCardsLoading={loading}
+				isLoading={loading}
 				loadRef={loadRef}
 			/>
 			<PokemonDetails

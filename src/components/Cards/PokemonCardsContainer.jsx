@@ -6,20 +6,18 @@ const Cards = lazy(() => import("./Cards"))
 
 function PokemonCardsContainer(props) {
 
-	const [lastEle, setLastEle] = useState(false);
-
 	return (
 		<Row
 			className='cards-pokemon-row'
 		>
 			{props.pokemons.filter((pokemon) => {
-				let val;
+				let search;
 				if (props.search === "") {
-					val = pokemon;
-				} else if (pokemon.name.toLowerCase().includes(props.search.toLowerCase())) {
-					val = pokemon;
+					search = pokemon;
+				} else if (pokemon.name.includes(props.search.toLowerCase())) {
+					search = pokemon;
 				}
-				return val;
+				return search;
 			}).map((pokemon, idx) => (
 				<Col
 					className='card-col'
@@ -34,7 +32,6 @@ function PokemonCardsContainer(props) {
 							pokemon={pokemon}
 							pokemonArr={props.pokemons}
 							handleModal={props.handleModal}
-							setLastEle={setLastEle}
 						/>
 					</Suspense>
 				</Col>
@@ -45,7 +42,7 @@ function PokemonCardsContainer(props) {
 				className='card-col'
 				span={8}
 			>
-				{lastEle && <LoadingCards isRef={true} />}
+				{props.isLoading && <LoadingCards isRef={true} />}
 			</Col>
 		</Row>
 	)
