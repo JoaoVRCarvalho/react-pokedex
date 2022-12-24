@@ -1,4 +1,4 @@
-import { React, useState, Suspense, lazy } from 'react'
+import { React, Suspense, lazy } from 'react'
 import { Row, Col } from 'antd';
 import LoadingCards from '../_loadingComponents/LoadingCards';
 
@@ -23,6 +23,12 @@ function PokemonCardsContainer(props) {
 					className='card-col'
 					key={idx}
 					span={8}
+					xxl={8}
+					xl={8}
+					lg={8}
+					md={8}
+					sm={12}
+					xs={24}
 				>
 					<Suspense
 						fallback={<LoadingCards isRef={false} />}
@@ -41,6 +47,12 @@ function PokemonCardsContainer(props) {
 				ref={props.loadRef}
 				className='card-col'
 				span={8}
+				xxl={8}
+				xl={8}
+				lg={8}
+				md={8}
+				sm={12}
+				xs={24}
 			>
 				{props.isLoading && <LoadingCards isRef={true} />}
 			</Col>
