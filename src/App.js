@@ -6,6 +6,8 @@ import Background from './components/BackgroundImage/BackgroundImage';
 import PokedexContainer from './components/Container/ContentWindow';
 import PokemonDetails from './components/Modal/Modal';
 
+
+// pesquisar pokemon pela endpoint
 function App() {
 	const { loadRef, extraLimit: limit } = useInfiniteScroll()
 	const { data: pokemons, buffer, loading } = useFetchPokemon(limit);
