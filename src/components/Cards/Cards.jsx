@@ -16,6 +16,7 @@ function Cards({ pokemon, handleModal, idx, pokemonArr, renderLastEle, setLastEl
 			cover={
 				<img
 					alt="pokemon"
+					className='pokemon-card-img'
 					src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
 				/>
 			}
