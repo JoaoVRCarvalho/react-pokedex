@@ -8,10 +8,13 @@ function PokedexContainer(props) {
 
 	return (
 		<div className='container'>
-			<h1 className='title'>
-				POKEDEX!
-				<i className='icon' />
-			</h1>
+			<div className='title-wrapper'>
+				<h1 className='title'>
+					POKEDEX!
+					<i className='icon' />
+				</h1>
+
+			</div>
 			<SearchBar
 				buffer={props.buffer}
 				pokemons={props.pokemons}
