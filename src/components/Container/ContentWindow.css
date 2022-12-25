@@ -20,10 +20,30 @@
 
 .title-wrapper {
 	display: flex;
+	margin: 0 auto;
 	justify-content: center;
 	max-width: 600px;
 	max-height: auto;
-	min-width: 300px;
+	/* min-width: 300px; */
+}
+
+.icon {
+	background: url('../../../public/img/pokedex-icon-9\ \(1\).jpg');
+	background-repeat: no-repeat;
+	height: 45px;
+	width: 45px;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+@media only screen and (max-width: 400px) {
+	.title-wrapper {
+		max-width: 300px;
+	}
+
+	.icon {
+		display: none;
+	}
 }
 
 .container .title {
@@ -41,15 +61,6 @@
 	-webkit-text-stroke: 1px rgba(254, 1, 1, 255);
 	font-size: 60px;
 	margin-bottom: 0;
-}
-
-.icon {
-	background: url('../../../public/img/pokedex-icon-9\ \(1\).jpg');
-	background-repeat: no-repeat;
-	height: 45px;
-	width: 45px;
-	display: inline-block;
-	margin-left: 10px;
 }
 
 .searchbar-wrapper {
