@@ -13,7 +13,6 @@ const LoadingCards = ({ isRef }) => {
 				cover={
 					<Skeleton.Image
 						className='cards-img-skeleton'
-						size={"large"}
 					/>
 				}
 			>
@@ -40,7 +39,6 @@ const LoadingCards = ({ isRef }) => {
 				cover={
 					<Skeleton.Image
 						className='cards-img-skeleton'
-						size={"large"}
 						active
 					/>
 				}
