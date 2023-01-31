@@ -40,6 +40,7 @@ function Cards({ pokemon, handleModal, idx, pokemonArr, renderLastEle, setLastEl
 							className='pokemon-details-button'
 							type="primary"
 							danger
+							disabled
 							onClick={() => handleModal(pokemon)}
 						>
 							Details!
